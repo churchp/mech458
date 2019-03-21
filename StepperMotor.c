@@ -6,8 +6,8 @@
 # NAME 1 : Patrick, Church, V00802612
 # NAME 2 : Riley, Confrey, V00817892
 # DESC : This program initializes the stepper motor to turn CW 101 steps to
-reach a particular position. From there the stepper motor turns CW 30°, then 60°, 
-and then 180°. After that the stepper motor turns CCW 30°, then 60°, and then 180°.
+reach a particular position. From there the stepper motor turns CW 30Â°, then 60Â°, 
+and then 180Â°. After that the stepper motor turns CCW 30Â°, then 60Â°, and then 180Â°.
 # DATA
 # REVISED
 
