@@ -44,7 +44,7 @@ void mTimer (int count)
 
 int main(int argc,char*argv[])
 {
-	unsigned char i;
+	unsigned int i = 11111;
 
 	//Initialize LCD module
 	InitLCD(LS_BLINK|LS_ULINE);
@@ -53,40 +53,11 @@ int main(int argc,char*argv[])
 	LCDClear();
 
 	//Simple string printing
-	LCDWriteString("Congrats ");
+	LCDWriteIntXY(4,0,i,8);
+	//LCDWriteStringXY(12,1,"%");
+
+
 	
-	//A string on line 2
-	LCDWriteStringXY(0,1,"Loading ");
-
-	//Print some numbers
-	for (i=0;i<99;i+=1)
-	{
-		LCDWriteIntXY(9,1,i,3);
-		LCDWriteStringXY(12,1,"%");
-		//_delay_loop_2(0);	
-		//_delay_loop_2(0);	
-		//_delay_loop_2(0);	
-		//_delay_loop_2(0);	
-
-      mTimer(1000);
-	}
-
-	//Clear the screen
-	LCDClear();
-
-	//Some more text
-
-	LCDWriteString("Hello world");
-	LCDWriteStringXY(0,1,"By Pat");		// <--- Write ur NAME HERE !!!!!!!!!!!
-
-	//Wait ~ 25 secs
-	//for(i=0;i<100;i++) _delay_loop_2(0);
-   mTimer (25000);
-
-	//Some More ......
-	LCDClear();
-	LCDWriteString("    eXtreme");
-	LCDWriteStringXY(0,1,"  Electronics");
 
    return(0);
 
