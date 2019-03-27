@@ -5,7 +5,7 @@ We'll use this to write notes about our current and future goals, and to write u
 
 TO DO list:
   - write ADC portion
-    * run belt until a piece is in front of OR
+    * run belt until a piece has passed OR then stop
     * scan pieces
       + store 10 bit int
       + record min or max value
