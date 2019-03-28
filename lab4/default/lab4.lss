@@ -1,0 +1,203 @@
+
+lab4.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         0000013c  00000000  00000000  00000054  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .debug_aranges 00000020  00000000  00000000  00000190  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  2 .debug_pubnames 00000026  00000000  00000000  000001b0  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  3 .debug_info   000000e4  00000000  00000000  000001d6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .debug_abbrev 00000081  00000000  00000000  000002ba  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  5 .debug_line   000000ed  00000000  00000000  0000033b  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  6 .debug_frame  00000030  00000000  00000000  00000428  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_str    0000008e  00000000  00000000  00000458  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_loc    00000058  00000000  00000000  000004e6  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 4c 00 	jmp	0x98	; 0x98 <__ctors_end>
+   4:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+   8:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+   c:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  10:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  14:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  18:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  1c:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  20:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  24:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  28:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  2c:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  30:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  34:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  38:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  3c:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  40:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  44:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  48:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  4c:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  50:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  54:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  58:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  5c:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  60:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  64:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  68:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  6c:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  70:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  74:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  78:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  7c:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  80:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  84:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  88:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  8c:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  90:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+  94:	0c 94 63 00 	jmp	0xc6	; 0xc6 <__bad_interrupt>
+
+00000098 <__ctors_end>:
+  98:	11 24       	eor	r1, r1
+  9a:	1f be       	out	0x3f, r1	; 63
+  9c:	cf ef       	ldi	r28, 0xFF	; 255
+  9e:	d0 e2       	ldi	r29, 0x20	; 32
+  a0:	de bf       	out	0x3e, r29	; 62
+  a2:	cd bf       	out	0x3d, r28	; 61
+
+000000a4 <__do_copy_data>:
+  a4:	11 e0       	ldi	r17, 0x01	; 1
+  a6:	a0 e0       	ldi	r26, 0x00	; 0
+  a8:	b1 e0       	ldi	r27, 0x01	; 1
+  aa:	ec e3       	ldi	r30, 0x3C	; 60
+  ac:	f1 e0       	ldi	r31, 0x01	; 1
+  ae:	00 e0       	ldi	r16, 0x00	; 0
+  b0:	0b bf       	out	0x3b, r16	; 59
+  b2:	02 c0       	rjmp	.+4      	; 0xb8 <__do_copy_data+0x14>
+  b4:	07 90       	elpm	r0, Z+
+  b6:	0d 92       	st	X+, r0
+  b8:	a0 30       	cpi	r26, 0x00	; 0
+  ba:	b1 07       	cpc	r27, r17
+  bc:	d9 f7       	brne	.-10     	; 0xb4 <__do_copy_data+0x10>
+  be:	0e 94 86 00 	call	0x10c	; 0x10c <main>
+  c2:	0c 94 9c 00 	jmp	0x138	; 0x138 <_exit>
+
+000000c6 <__bad_interrupt>:
+  c6:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+000000ca <mTimer>:
+}//end main
+
+
+
+void mTimer(int count)
+{
+  ca:	9c 01       	movw	r18, r24
+    int i = 0;                    // Loop counter
+    TCCR1B |= _BV(WGM12);         // Set to Waveform Generator Mode 12 (Clear on Timer Compare)
+  cc:	80 91 81 00 	lds	r24, 0x0081
+  d0:	88 60       	ori	r24, 0x08	; 8
+  d2:	80 93 81 00 	sts	0x0081, r24
+    OCR1A = 0x03E8;               // Set output compare register for 1000 cycles(1ms)
+  d6:	88 ee       	ldi	r24, 0xE8	; 232
+  d8:	93 e0       	ldi	r25, 0x03	; 3
+  da:	90 93 89 00 	sts	0x0089, r25
+  de:	80 93 88 00 	sts	0x0088, r24
+    TCNT1 = 0x0000;               // Set initial counter timer time to 0
+  e2:	10 92 85 00 	sts	0x0085, r1
+  e6:	10 92 84 00 	sts	0x0084, r1
+    TIMSK1 = TIMSK1 | 0b00000010; // Enable output compare interrupt
+  ea:	80 91 6f 00 	lds	r24, 0x006F
+  ee:	82 60       	ori	r24, 0x02	; 2
+  f0:	80 93 6f 00 	sts	0x006F, r24
+    TIFR1 |= _BV(OCF1A);          // Clear interrupt flag and start timer
+  f4:	b1 9a       	sbi	0x16, 1	; 22
+  f6:	80 e0       	ldi	r24, 0x00	; 0
+  f8:	90 e0       	ldi	r25, 0x00	; 0
+  fa:	04 c0       	rjmp	.+8      	; 0x104 <mTimer+0x3a>
+
+    //TODO: switch this to a real interrupt
+    while (i < count)
+    {
+        //When the interrupt's flag is triggered
+        if ((TIFR1 & 0x02) == 0x02)
+  fc:	b1 9b       	sbis	0x16, 1	; 22
+  fe:	fe cf       	rjmp	.-4      	; 0xfc <mTimer+0x32>
+        {
+            TIFR1 |= _BV(OCF1A); //Clear the flag
+ 100:	b1 9a       	sbi	0x16, 1	; 22
+            i++;                 //increment the loop
+ 102:	01 96       	adiw	r24, 0x01	; 1
+    TCNT1 = 0x0000;               // Set initial counter timer time to 0
+    TIMSK1 = TIMSK1 | 0b00000010; // Enable output compare interrupt
+    TIFR1 |= _BV(OCF1A);          // Clear interrupt flag and start timer
+
+    //TODO: switch this to a real interrupt
+    while (i < count)
+ 104:	82 17       	cp	r24, r18
+ 106:	93 07       	cpc	r25, r19
+ 108:	cc f3       	brlt	.-14     	; 0xfc <mTimer+0x32>
+            TIFR1 |= _BV(OCF1A); //Clear the flag
+            i++;                 //increment the loop
+        }
+    }
+    return;
+}
+ 10a:	08 95       	ret
+
+0000010c <main>:
+void initializeStepper(); //initializing the intialization function for the stepper motor
+
+//################## MAIN ROUTINE ##################
+
+
+int main(int argc, char *argv[]){
+ 10c:	0f 93       	push	r16
+ 10e:	1f 93       	push	r17
+
+DDRA = 0xFF;            
+ 110:	8f ef       	ldi	r24, 0xFF	; 255
+ 112:	81 b9       	out	0x01, r24	; 1
+TCCR1B |= _BV(CS10);    //Initialize the timer control register, clock scaling CS10              
+ 114:	80 91 81 00 	lds	r24, 0x0081
+ 118:	81 60       	ori	r24, 0x01	; 1
+ 11a:	80 93 81 00 	sts	0x0081, r24
+
+	while(1){
+
+		PORTA = 0x01;
+ 11e:	01 e0       	ldi	r16, 0x01	; 1
+		mTimer(2000);              //Wait 2 seconds
+		PORTA = 0x02;
+ 120:	12 e0       	ldi	r17, 0x02	; 2
+DDRA = 0xFF;            
+TCCR1B |= _BV(CS10);    //Initialize the timer control register, clock scaling CS10              
+
+	while(1){
+
+		PORTA = 0x01;
+ 122:	02 b9       	out	0x02, r16	; 2
+		mTimer(2000);              //Wait 2 seconds
+ 124:	80 ed       	ldi	r24, 0xD0	; 208
+ 126:	97 e0       	ldi	r25, 0x07	; 7
+ 128:	0e 94 65 00 	call	0xca	; 0xca <mTimer>
+		PORTA = 0x02;
+ 12c:	12 b9       	out	0x02, r17	; 2
+		mTimer(3000);              //Wait 3 seconds
+ 12e:	88 eb       	ldi	r24, 0xB8	; 184
+ 130:	9b e0       	ldi	r25, 0x0B	; 11
+ 132:	0e 94 65 00 	call	0xca	; 0xca <mTimer>
+ 136:	f5 cf       	rjmp	.-22     	; 0x122 <main+0x16>
+
+00000138 <_exit>:
+ 138:	f8 94       	cli
+
+0000013a <__stop_program>:
+ 13a:	ff cf       	rjmp	.-2      	; 0x13a <__stop_program>
