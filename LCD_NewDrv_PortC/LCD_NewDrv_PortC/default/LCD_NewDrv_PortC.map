@@ -1,0 +1,506 @@
+Archive member included because of file (symbol)
+
+f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_divmodhi4.o)
+                              LCD.o (__divmodhi4)
+f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
+                              f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1287.o (exit)
+f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
+                              LCD_NewDrv_PortC.o (__do_clear_bss)
+f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodhi4.o)
+                              f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_divmodhi4.o) (__udivmodhi4)
+f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(malloc.o)
+                              LinkedQueue.o (malloc)
+
+Allocating common symbols
+Common symbol       size              file
+
+ADC_result          0x2               LCD_NewDrv_PortC.o
+STP180steps         0x2               LCD_NewDrv_PortC.o
+__brkval            0x2               f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(malloc.o)
+STP90steps          0x2               LCD_NewDrv_PortC.o
+STPpos              0x2               LCD_NewDrv_PortC.o
+tail                0x2               LCD_NewDrv_PortC.o
+head                0x2               LCD_NewDrv_PortC.o
+newLink             0x2               LCD_NewDrv_PortC.o
+__flp               0x2               f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(malloc.o)
+
+Memory Configuration
+
+Name             Origin             Length             Attributes
+text             0x00000000         0x00020000         xr
+data             0x00800060         0x0000ffa0         rw !x
+eeprom           0x00810000         0x00010000         rw !x
+fuse             0x00820000         0x00000400         rw !x
+lock             0x00830000         0x00000400         rw !x
+signature        0x00840000         0x00000400         rw !x
+*default*        0x00000000         0xffffffff
+
+Linker script and memory map
+
+Address of section .data set to 0x800100
+LOAD f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1287.o
+LOAD LCD_NewDrv_PortC.o
+LOAD LCD.o
+LOAD LinkedQueue.o
+LOAD f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
+LOAD f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a
+LOAD f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a
+
+.hash
+ *(.hash)
+
+.dynsym
+ *(.dynsym)
+
+.dynstr
+ *(.dynstr)
+
+.gnu.version
+ *(.gnu.version)
+
+.gnu.version_d
+ *(.gnu.version_d)
+
+.gnu.version_r
+ *(.gnu.version_r)
+
+.rel.init
+ *(.rel.init)
+
+.rela.init
+ *(.rela.init)
+
+.rel.text
+ *(.rel.text)
+ *(.rel.text.*)
+ *(.rel.gnu.linkonce.t*)
+
+.rela.text
+ *(.rela.text)
+ *(.rela.text.*)
+ *(.rela.gnu.linkonce.t*)
+
+.rel.fini
+ *(.rel.fini)
+
+.rela.fini
+ *(.rela.fini)
+
+.rel.rodata
+ *(.rel.rodata)
+ *(.rel.rodata.*)
+ *(.rel.gnu.linkonce.r*)
+
+.rela.rodata
+ *(.rela.rodata)
+ *(.rela.rodata.*)
+ *(.rela.gnu.linkonce.r*)
+
+.rel.data
+ *(.rel.data)
+ *(.rel.data.*)
+ *(.rel.gnu.linkonce.d*)
+
+.rela.data
+ *(.rela.data)
+ *(.rela.data.*)
+ *(.rela.gnu.linkonce.d*)
+
+.rel.ctors
+ *(.rel.ctors)
+
+.rela.ctors
+ *(.rela.ctors)
+
+.rel.dtors
+ *(.rel.dtors)
+
+.rela.dtors
+ *(.rela.dtors)
+
+.rel.got
+ *(.rel.got)
+
+.rela.got
+ *(.rela.got)
+
+.rel.bss
+ *(.rel.bss)
+
+.rela.bss
+ *(.rela.bss)
+
+.rel.plt
+ *(.rel.plt)
+
+.rela.plt
+ *(.rela.plt)
+
+.text           0x00000000     0x1336
+ *(.vectors)
+ .vectors       0x00000000       0x98 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1287.o
+                0x00000000                __vectors
+ *(.vectors)
+ *(.progmem.gcc*)
+ *(.progmem*)
+                0x00000098                . = ALIGN (0x2)
+                0x00000098                __trampolines_start = .
+ *(.trampolines)
+ .trampolines   0x00000098        0x0 linker stubs
+ *(.trampolines*)
+                0x00000098                __trampolines_end = .
+ *(.jumptables)
+ *(.jumptables*)
+ *(.lowtext)
+ *(.lowtext*)
+                0x00000098                __ctors_start = .
+ *(.ctors)
+                0x00000098                __ctors_end = .
+                0x00000098                __dtors_start = .
+ *(.dtors)
+                0x00000098                __dtors_end = .
+ SORT(*)(.ctors)
+ SORT(*)(.dtors)
+ *(.init0)
+ .init0         0x00000098        0x0 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1287.o
+                0x00000098                __init
+ *(.init0)
+ *(.init1)
+ *(.init1)
+ *(.init2)
+ .init2         0x00000098        0xc f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1287.o
+ *(.init2)
+ *(.init3)
+ *(.init3)
+ *(.init4)
+ .init4         0x000000a4       0x1a f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1287.o
+                0x000000a4                __do_copy_data
+ .init4         0x000000be       0x10 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
+                0x000000be                __do_clear_bss
+ *(.init4)
+ *(.init5)
+ *(.init5)
+ *(.init6)
+ *(.init6)
+ *(.init7)
+ *(.init7)
+ *(.init8)
+ *(.init8)
+ *(.init9)
+ .init9         0x000000ce        0x8 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1287.o
+ *(.init9)
+ *(.text)
+ .text          0x000000d6        0x4 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1287.o
+                0x000000d6                __vector_22
+                0x000000d6                __vector_28
+                0x000000d6                __vector_34
+                0x000000d6                __vector_24
+                0x000000d6                __vector_12
+                0x000000d6                __bad_interrupt
+                0x000000d6                __vector_6
+                0x000000d6                __vector_31
+                0x000000d6                __vector_35
+                0x000000d6                __vector_23
+                0x000000d6                __vector_30
+                0x000000d6                __vector_25
+                0x000000d6                __vector_11
+                0x000000d6                __vector_13
+                0x000000d6                __vector_17
+                0x000000d6                __vector_19
+                0x000000d6                __vector_7
+                0x000000d6                __vector_27
+                0x000000d6                __vector_5
+                0x000000d6                __vector_33
+                0x000000d6                __vector_37
+                0x000000d6                __vector_9
+                0x000000d6                __vector_21
+                0x000000d6                __vector_15
+                0x000000d6                __vector_36
+                0x000000d6                __vector_8
+                0x000000d6                __vector_26
+                0x000000d6                __vector_14
+                0x000000d6                __vector_10
+                0x000000d6                __vector_16
+                0x000000d6                __vector_18
+                0x000000d6                __vector_20
+ .text          0x000000da      0xce4 LCD_NewDrv_PortC.o
+                0x00000408                STPaccelerate
+                0x00000930                __vector_1
+                0x000007fc                STPinitialization
+                0x00000116                __vector_32
+                0x00000904                mTimer2
+                0x0000038e                STPdeaccelerate
+                0x00000150                INTsetup
+                0x00000a86                __vector_3
+                0x000001ba                mTimer
+                0x00000206                STProtate
+                0x000001a4                DCmotor
+                0x0000017e                ADCsetup
+                0x0000013e                __vector_default
+                0x00000482                STPsort
+                0x00000b2e                main
+                0x000000da                __vector_4
+                0x00000834                __vector_2
+                0x00000998                __vector_29
+                0x0000016e                PWMsetup
+ .text          0x00000dbe      0x1e4 LCD.o
+                0x00000eb8                LCDWriteString
+                0x00000e12                LCDByte
+                0x00000dbe                LCDBusyLoop
+                0x00000e62                InitLCD
+                0x00000ed4                LCDWriteInt
+                0x00000f90                LCDGotoXY
+ .text          0x00000fa2      0x138 LinkedQueue.o
+                0x00001086                clearQueue
+                0x0000101c                firstValue
+                0x000010ba                initLink
+                0x00001066                size
+                0x00000fa2                setup
+                0x00000fb0                enqueue
+                0x00000fe2                dequeue
+                0x00001054                isEmpty
+ .text          0x000010da        0x0 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_divmodhi4.o)
+ .text          0x000010da        0x0 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
+ .text          0x000010da        0x0 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
+ .text          0x000010da        0x0 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodhi4.o)
+ .text          0x000010da        0x0 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(malloc.o)
+                0x000010da                . = ALIGN (0x2)
+ *(.text.*)
+ .text.libgcc   0x000010da       0x26 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_divmodhi4.o)
+                0x000010da                __divmodhi4
+                0x000010da                _div
+ .text.libgcc   0x00001100        0x0 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
+ .text.libgcc   0x00001100        0x0 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
+ .text.libgcc   0x00001100       0x28 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodhi4.o)
+                0x00001100                __udivmodhi4
+ .text.avr-libc
+                0x00001128      0x20a f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(malloc.o)
+                0x00001128                malloc
+                0x00001282                free
+                0x00001332                . = ALIGN (0x2)
+ *(.fini9)
+ .fini9         0x00001332        0x0 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
+                0x00001332                exit
+                0x00001332                _exit
+ *(.fini9)
+ *(.fini8)
+ *(.fini8)
+ *(.fini7)
+ *(.fini7)
+ *(.fini6)
+ *(.fini6)
+ *(.fini5)
+ *(.fini5)
+ *(.fini4)
+ *(.fini4)
+ *(.fini3)
+ *(.fini3)
+ *(.fini2)
+ *(.fini2)
+ *(.fini1)
+ *(.fini1)
+ *(.fini0)
+ .fini0         0x00001332        0x4 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
+ *(.fini0)
+                0x00001336                _etext = .
+
+.data           0x00800100       0x44 load address 0x00001336
+                0x00800100                PROVIDE (__data_start, .)
+ *(.data)
+ .data          0x00800100        0x0 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1287.o
+ .data          0x00800100       0x3e LCD_NewDrv_PortC.o
+                0x0080012e                ADCmin
+                0x0080013c                aluminumHigh
+                0x00800138                whiteHigh
+                0x0080013a                steelHigh
+                0x00800136                STPpause
+                0x00800134                CP
+                0x00800130                ADCdone
+                0x00800132                motorflag
+                0x0080012c                ADCcurr
+ .data          0x0080013e        0x0 LCD.o
+ .data          0x0080013e        0x0 LinkedQueue.o
+ .data          0x0080013e        0x0 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_divmodhi4.o)
+ .data          0x0080013e        0x0 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
+ .data          0x0080013e        0x0 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
+ .data          0x0080013e        0x0 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodhi4.o)
+ .data          0x0080013e        0x6 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(malloc.o)
+                0x00800140                __malloc_heap_start
+                0x00800142                __malloc_heap_end
+                0x0080013e                __malloc_margin
+ *(.data*)
+ *(.rodata)
+ *(.rodata*)
+ *(.gnu.linkonce.d*)
+                0x00800144                . = ALIGN (0x2)
+                0x00800144                _edata = .
+                0x00800144                PROVIDE (__data_end, .)
+
+.bss            0x00800144       0x34
+                0x00800144                PROVIDE (__bss_start, .)
+ *(.bss)
+ .bss           0x00800144        0x0 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51/crtusb1287.o
+ .bss           0x00800144       0x22 LCD_NewDrv_PortC.o
+                0x0080015a                counter3
+                0x00800152                pauseflag
+                0x00800162                STEEL
+                0x0080014e                buttonpushed
+                0x00800150                rampdownflag
+                0x00800144                ADC_result_flag
+                0x00800154                systemrunning
+                0x0080014c                stepperflag
+                0x00800146                ADCcounter
+                0x00800164                ALUMINUM
+                0x00800156                counter
+                0x00800160                WHITE
+                0x00800148                printflag
+                0x0080014a                dontprintflag
+                0x0080015c                SORTED
+                0x0080015e                BLACK
+                0x00800158                counter2
+ .bss           0x00800166        0x0 LCD.o
+ .bss           0x00800166        0x0 LinkedQueue.o
+ .bss           0x00800166        0x0 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_divmodhi4.o)
+ .bss           0x00800166        0x0 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_exit.o)
+ .bss           0x00800166        0x0 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_clear_bss.o)
+ .bss           0x00800166        0x0 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/avr51\libgcc.a(_udivmodhi4.o)
+ .bss           0x00800166        0x0 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(malloc.o)
+ *(.bss*)
+ *(COMMON)
+ COMMON         0x00800166        0xe LCD_NewDrv_PortC.o
+                0x00800166                ADC_result
+                0x00800168                STP180steps
+                0x0080016a                STP90steps
+                0x0080016c                STPpos
+                0x0080016e                tail
+                0x00800170                head
+                0x00800172                newLink
+ COMMON         0x00800174        0x4 f:/winavr-20100110/bin/../lib/gcc/avr/4.3.3/../../../../avr/lib/avr51\libc.a(malloc.o)
+                0x00800174                __brkval
+                0x00800176                __flp
+                0x00800178                PROVIDE (__bss_end, .)
+                0x00001336                __data_load_start = LOADADDR (.data)
+                0x0000137a                __data_load_end = (__data_load_start + SIZEOF (.data))
+
+.noinit         0x00800178        0x0
+                0x00800178                PROVIDE (__noinit_start, .)
+ *(.noinit*)
+                0x00800178                PROVIDE (__noinit_end, .)
+                0x00800178                _end = .
+                0x00800178                PROVIDE (__heap_start, .)
+
+.eeprom         0x00810000        0x0
+ *(.eeprom*)
+                0x00810000                __eeprom_end = .
+
+.fuse
+ *(.fuse)
+ *(.lfuse)
+ *(.hfuse)
+ *(.efuse)
+
+.lock
+ *(.lock*)
+
+.signature
+ *(.signature*)
+
+.stab
+ *(.stab)
+
+.stabstr
+ *(.stabstr)
+
+.stab.excl
+ *(.stab.excl)
+
+.stab.exclstr
+ *(.stab.exclstr)
+
+.stab.index
+ *(.stab.index)
+
+.stab.indexstr
+ *(.stab.indexstr)
+
+.comment
+ *(.comment)
+
+.debug
+ *(.debug)
+
+.line
+ *(.line)
+
+.debug_srcinfo
+ *(.debug_srcinfo)
+
+.debug_sfnames
+ *(.debug_sfnames)
+
+.debug_aranges  0x00000000       0x60
+ *(.debug_aranges)
+ .debug_aranges
+                0x00000000       0x20 LCD_NewDrv_PortC.o
+ .debug_aranges
+                0x00000020       0x20 LCD.o
+ .debug_aranges
+                0x00000040       0x20 LinkedQueue.o
+
+.debug_pubnames
+                0x00000000      0x3c5
+ *(.debug_pubnames)
+ .debug_pubnames
+                0x00000000      0x2e6 LCD_NewDrv_PortC.o
+ .debug_pubnames
+                0x000002e6       0x6b LCD.o
+ .debug_pubnames
+                0x00000351       0x74 LinkedQueue.o
+
+.debug_info     0x00000000      0xff6
+ *(.debug_info)
+ .debug_info    0x00000000      0x738 LCD_NewDrv_PortC.o
+ .debug_info    0x00000738      0x615 LCD.o
+ .debug_info    0x00000d4d      0x2a9 LinkedQueue.o
+ *(.gnu.linkonce.wi.*)
+
+.debug_abbrev   0x00000000      0x4c2
+ *(.debug_abbrev)
+ .debug_abbrev  0x00000000      0x1f9 LCD_NewDrv_PortC.o
+ .debug_abbrev  0x000001f9      0x1a3 LCD.o
+ .debug_abbrev  0x0000039c      0x126 LinkedQueue.o
+
+.debug_line     0x00000000     0x1084
+ *(.debug_line)
+ .debug_line    0x00000000      0xb29 LCD_NewDrv_PortC.o
+ .debug_line    0x00000b29      0x3c3 LCD.o
+ .debug_line    0x00000eec      0x198 LinkedQueue.o
+
+.debug_frame    0x00000000      0x240
+ *(.debug_frame)
+ .debug_frame   0x00000000      0x140 LCD_NewDrv_PortC.o
+ .debug_frame   0x00000140       0x70 LCD.o
+ .debug_frame   0x000001b0       0x90 LinkedQueue.o
+
+.debug_str      0x00000000      0x468
+ *(.debug_str)
+ .debug_str     0x00000000      0x2fa LCD_NewDrv_PortC.o
+                                0x357 (size before relaxing)
+ .debug_str     0x000002fa      0x108 LCD.o
+                                0x188 (size before relaxing)
+ .debug_str     0x00000402       0x66 LinkedQueue.o
+                                0x145 (size before relaxing)
+
+.debug_loc      0x00000000      0x6bb
+ *(.debug_loc)
+ .debug_loc     0x00000000      0x1d0 LCD_NewDrv_PortC.o
+ .debug_loc     0x000001d0      0x2fb LCD.o
+ .debug_loc     0x000004cb      0x1f0 LinkedQueue.o
+
+.debug_macinfo
+ *(.debug_macinfo)
+OUTPUT(LCD_NewDrv_PortC.elf elf32-avr)
+LOAD linker stubs
+
+.debug_ranges   0x00000000       0x48
+ .debug_ranges  0x00000000       0x48 LCD.o
