@@ -87,53 +87,53 @@ int main(int argc,char*argv[])
 {
 
 	ATOMIC_BLOCK(ATOMIC_FORCEON){
-        	InitLCD(LS_BLINK|LS_ULINE); //Initialize LCD module
-		LCDClear();  				//Clear the screen
+        InitLCD(LS_BLINK|LS_ULINE); //Initialize LCD module
+	    LCDClear();  				//Clear the screen
 		LCDWriteStringXY(0,0,"Starting...");
 		mTimer(1000);
-     	}
+     }
 
-    DDRA = 0xFF;            	//PORT A set to outputs for the LEDs
+    DDRA = 0xFF;            //PORT A set to outputs for the LEDs
     DDRB = 0xFF;           	//PORT B set to outputs for the pwm and DC motor)
-    DDRD = 0b10110000;      	//PORT D set to inputs for specific interrupts & buttons
-    DDRE = 0xFF;		//PORT E set to outputs for the stepper motor
+	DDRD = 0b10110000;      //PORT D set to inputs for specific interrupts & buttons
+	DDRE = 0xFF;			//PORT E set to outputs for the stepper motor
     DDRF = 0x00;           	//PORT F set to inputs (for the RL/ADC)
 
 	STP90steps = 50 - (2 * STPpause);	//adjusts the # of steps based on the accl steps
 	STP180steps = 100 - (2 * STPpause);	//adjusts the # of steps based on the accl steps
   
 
-    	cli();		//disables all interrupts
-    	ADCsetup();	//sets up the ADC
-    	INTsetup(); 	//sets up the interrupts
+    cli();		//disables all interrupts
+    ADCsetup();	//sets up the ADC
+    INTsetup(); //sets up the interrupts
 	PWMsetup();	//sets up the PWM
 	STPsetup();	//homes the stepper
 
 	setup(&head, &tail);	//connects head and tail of the linked list
 
     ATOMIC_BLOCK(ATOMIC_FORCEON){
-	LCDClear();  //Clear the screen
-	LCDWriteStringXY(0,0,"Ready to Run");
+	    LCDClear();  //Clear the screen
+		LCDWriteStringXY(0,0,"Ready to Run");
     }  
 
     while(1){
         
-	//As long as systemrunning is true the program will loop through here
+		//As long as systemrunning is true the program will loop through here
         if(systemrunning == 1){
-		DCmotor(1,0); 	//run motor CW
-            	PORTA = 0x80;	//LEDs for troubleshooting	
+			DCmotor(1,0); 	//run motor CW
+            PORTA = 0x80;	//LEDs for troubleshooting	
         } 
-	//Once pause is called, as long as rampdown has not been called the program will loop through here
+		//Once pause is called, as long as rampdown has not been called the program will loop through here
         else if((pauseflag == 1) && (rampdownflag == 0)){
             systemrunning = 0;	//reset systemrunning to zero so that the system stays in pause state
             PORTA = 0x10;	//LEDs for troubleshooting	
         }    
 
-	//Once rampdown is called the system must wait until the queue is empty
-	if((rampdownflag == 1) && (size(&head, &tail) == 0)) {
-		printflag = 1;	//Set to 1 to call the printing code
-            	PORTA = 0x0E;	//LEDs for troubleshooting	
-	}
+		//Once rampdown is called the system must wait until the queue is empty
+		if((rampdownflag == 1) && (size(&head, &tail) == 0)) {
+			printflag = 1;	//Set to 1 to call the printing code
+            PORTA = 0x0E;	//LEDs for troubleshooting	
+		}
         
         if(printflag == 1){
                 
@@ -174,8 +174,8 @@ int main(int argc,char*argv[])
 ISR(INT0_vect)	//Rampdown interrupt
 { 
     while((PIND & 0x01) == 0);	//Wait until the rampdown button is released
-	mTimer2();		//Call mTimer2 for 2 seconds
-    	EIMSK &= ~_BV(INT0);	//mask INT0
+	mTimer2();				//Call mTimer2 for 2 seconds
+    EIMSK &= ~_BV(INT0);	//mask INT0
 }
 
 ISR(INT1_vect)	//Start and pause interrupt
@@ -183,19 +183,19 @@ ISR(INT1_vect)	//Start and pause interrupt
     if(systemrunning == 1){
         pauseflag = 1;		//Set to pause state
         printflag = 1;		//Set printflag to call the printing code once
-	systemrunning = 0;	//Disable run state
+		systemrunning = 0;	//Disable run state
         PORTA = 0xC0;		//LEDs for troubleshooting
         DCmotor(0,1);		//brake high to Vcc
     }
     else if(systemrunning == 0){
-	pauseflag = 0;		//Disable pause state
+		pauseflag = 0;		//Disable pause state
         systemrunning = 1;	//Set to run state
         PORTA = 0x30;		//LEDs for troubleshooting
-    }
+	}
 
-    while((PIND & 0x02) == 0){	//Wait until button has been released
-	PORTA = 0x0F;		//LEDs for troubleshooting
-    }  
+	while((PIND & 0x02) == 0){	//Wait until button has been released
+		PORTA = 0x0F;		//LEDs for troubleshooting
+	}  
 
     mTimer(500);  
     EIFR |= _BV(INTF1);	//
@@ -204,17 +204,17 @@ ISR(INT1_vect)	//Start and pause interrupt
 ISR(INT2_vect)	//Exit sensor interrupt
 {
     if((PIND & 0x04) == 0){
-		DCmotor(0,1); 	//Brake the DC motor
-		mTimer(55);	//Wait 
+			DCmotor(0,1); 	//Brake the DC motor
+			mTimer(55);		//Wait 
 			
-		STPsort();	//Calls the sorting algorithm to position the tray correctly
+			STPsort();		//Calls the sorting algorithm to position the tray correctly
             
-		link *rtnLink;	//creates a temporary link to help dequeue
-		dequeue(&head, &tail, &rtnLink);	//dequeues the first link in the queue
-		free(rtnLink); 	//frees up the memory of "rtnLink" 
+			link *rtnLink;	//creates a temporary link to help dequeue
+			dequeue(&head, &tail, &rtnLink);	//dequeues the first link in the queue
+			free(rtnLink); 	//frees up the memory of "rtnLink" 
 
-		DCmotor(1,0); 	//run motor CW
-		mTimer(100);	//Delay for 0.1s so that the current piece is pushed off the belt before the next piece reaches the exit sensor
+			DCmotor(1,0); 	//run motor CW
+			mTimer(100);	//Delay for 0.1s so that the current piece is pushed off the belt before the next piece reaches the exit sensor
 	}
 }
 
@@ -223,9 +223,9 @@ ISR(INT3_vect) //OR sensor stops belt
 {
     if(!((PIND & 0x08) == 0)){
         PORTA = 0x08;
-        ADCmin = 2000;		//Reset ADCmin to well above the minimum value of a black piece
+        ADCmin = 2000;			//Reset ADCmin to well above the minimum value of a black piece
         ADCSRA |= _BV(ADSC);	//Start ADC conversion
-	EIMSK &= ~_BV(INT3);	//Mask INT3
+		EIMSK &= ~_BV(INT3);	//Mask INT3
     }
 }
 
@@ -236,17 +236,18 @@ ISR(ADC_vect)
     if(ADC_result < ADCmin) ADCmin = ADC_result;
 
     if(!((PIND & 0x08) == 0) || (ADCcounter < 375)) {
-	ADCcounter++;
+		ADCcounter++;
         ADCSRA |= _BV(ADSC);	//Starts another ADC conversion
         PORTA = 0x40;
     }
     else {
-	initLink(&newLink);		//Creates a new list item
-	newLink->e.itemCode = ADCmin;	//Sets the minimum value of the ADC to the new list item code
-	enqueue(&head, &tail, &newLink);//Adds the new item to the queue
+		
+		initLink(&newLink);				//Creates a new list item
+		newLink->e.itemCode = ADCmin;	//Sets the minimum value of the ADC to the new list item code
+		enqueue(&head, &tail, &newLink);//Adds the new item to the queue
 
-	ADCcounter = 0; 
-	EIMSK |= _BV(INT3);	//Unmask INT3
+		ADCcounter = 0; 
+		EIMSK |= _BV(INT3);	//Unmask INT3
         PORTA = 0x20;
     }//end else
 
@@ -269,7 +270,7 @@ void INTsetup()
 	
     EICRA &= ~_BV(ISC01) & ~_BV(ISC00);	//Low level for ramp button
     EICRA &= ~_BV(ISC11) & ~_BV(ISC10);	//Low level for pause button
-    EICRA |= _BV(ISC21);		//Falling edge on EX
+	EICRA |= _BV(ISC21);				//Falling edge on EX
     EICRA |= (_BV(ISC31) | _BV(ISC30)); //Rising edge on OR
 }
 
@@ -277,7 +278,7 @@ void ADCsetup()
 {
     ATOMIC_BLOCK(ATOMIC_FORCEON){         
         ADCSRA |= _BV(ADEN);
-	ADCSRA |= _BV(ADIE);
+		ADCSRA |= _BV(ADIE);
         ADMUX |= _BV(REFS0);
         ADMUX |= _BV(MUX0);
     }
@@ -418,7 +419,7 @@ void STPsort()
 			STPaccelerate(1);	//Accelerate CW
 			STProtate(1,STP90steps,STPpause);	//rotate CW 90deg
 			STPdeaccelerate(1);	//Deaccelerate CW
-			STPpos = 3;		//pos set to alum
+			STPpos = 3;			//pos set to alum
             ALUMINUM++;
 			PORTA = 0x08;
 		}
@@ -426,7 +427,7 @@ void STPsort()
 			STPaccelerate(0);	//Accelerate CCW
 			STProtate(0,STP90steps,STPpause);	//rotate CCW 90deg
 			STPdeaccelerate(0);	//Deaccelerate CCW
-			STPpos = 2;		//pos set to steel
+			STPpos = 2;			//pos set to steel
             STEEL++;
 			PORTA = 0x04;
 		}
@@ -434,7 +435,7 @@ void STPsort()
 			STPaccelerate(1);	//Accelerate CW
 			STProtate(1,STP180steps,STPpause);	//rotate CW 180deg
 			STPdeaccelerate(1);	//Deaccelerate CW
-			STPpos = 1;		//pos set to white
+			STPpos = 1;			//pos set to white
             WHITE++;
 			PORTA = 0x02;
 		}
@@ -451,7 +452,7 @@ void STPsort()
 			STPaccelerate(0);	//Accelerate CCW
 			STProtate(0,STP90steps,STPpause);	//rotate CCW 90deg
 			STPdeaccelerate(0);	//Deaccelerate CCW
-			STPpos = 3;		//pos set to alum
+			STPpos = 3;			//pos set to alum
             ALUMINUM++;
 			PORTA = 0x08;
 		}
@@ -459,12 +460,12 @@ void STPsort()
 			STPaccelerate(1);	//Accelerate CW
 			STProtate(1,STP90steps,STPpause);	//rotate CW 90deg
 			STPdeaccelerate(1);	//Deaccelerate CW
-			STPpos = 2;		//pos set to steel
+			STPpos = 2;			//pos set to steel
             STEEL++;
 			PORTA = 0x04;
 		}
 		else if(itemVal < whiteHigh){
-			STPpos = 1;		//pos set to white
+			STPpos = 1;			//pos set to white
             WHITE++;
 			PORTA = 0x02;
 		}
@@ -472,7 +473,7 @@ void STPsort()
 			STPaccelerate(1);	//Accelerate CW
 			STProtate(1,STP180steps,STPpause);	//rotate CW 180deg
 			STPdeaccelerate(1);	//Deaccelerate CW
-			STPpos = 0;		//pos set to black
+			STPpos = 0;			//pos set to black
             BLACK++;
 			PORTA = 0x01;
 		}
@@ -484,12 +485,12 @@ void STPsort()
 			STPaccelerate(1);	//Accelerate CW
 			STProtate(1,STP180steps,STPpause);	//rotate CW 180deg
 			STPdeaccelerate(1);	//Deaccelerate CW
-			STPpos = 3;		//pos set to alum
+			STPpos = 3;			//pos set to alum
             ALUMINUM++;
 			PORTA = 0x08;
 		}
 		else if(itemVal < steelHigh){
-			STPpos = 2;		//pos set to steel
+			STPpos = 2;			//pos set to steel
             STEEL++;
 			PORTA = 0x04;
 		}
@@ -497,7 +498,7 @@ void STPsort()
 			STPaccelerate(0);	//Accelerate CCW	
 			STProtate(0,STP90steps,STPpause);	//rotate CCW 90deg
 			STPdeaccelerate(0);	//Deaccelerate CCW
-			STPpos = 1;		//pos set to white
+			STPpos = 1;			//pos set to white
             WHITE++;
 			PORTA = 0x02;
 		}
@@ -505,7 +506,7 @@ void STPsort()
 			STPaccelerate(1);	//Accelerate CW
 			STProtate(1,STP90steps,STPpause);	//rotate CW 90deg
 			STPdeaccelerate(1);	//Deaccelerate CW
-			STPpos = 0;		//pos set to black
+			STPpos = 0;			//pos set to black
             BLACK++;
 			PORTA = 0x01;
 		}
@@ -514,7 +515,7 @@ void STPsort()
 	else if(STPpos == 3) //at aluminum position
 	{
 		if(itemVal < aluminumHigh){
-			STPpos = 3;		//pos set to alum
+			STPpos = 3;			//pos set to alum
             ALUMINUM++;
 			PORTA = 0x08;
 		}
@@ -522,7 +523,7 @@ void STPsort()
 			STPaccelerate(1);	//Accelerate CW
 			STProtate(1,STP180steps,STPpause);	//rotate CW 180deg
 			STPdeaccelerate(1);	//Deaccelerate CW
-			STPpos = 2;		//pos set to steel
+			STPpos = 2;			//pos set to steel
             STEEL++;
 			PORTA = 0x04;
 		}
@@ -530,7 +531,7 @@ void STPsort()
 			STPaccelerate(1);	//Accelerate CW
 			STProtate(1,STP90steps,STPpause);	//rotate CW 90deg
 			STPdeaccelerate(1);	//Deaccelerate CW
-			STPpos = 1;		//pos set to white
+			STPpos = 1;			//pos set to white
             WHITE++;
 			PORTA = 0x02;
 		}
@@ -538,7 +539,7 @@ void STPsort()
 			STPaccelerate(0);	//Accelerate CCW
 			STProtate(0,STP90steps,STPpause);	//rotate CCW 90deg
 			STPdeaccelerate(0);	//Deaccelerate CCW
-			STPpos = 0;		//pos set to black
+			STPpos = 0;			//pos set to black
             BLACK++;
 			PORTA = 0x01;
 		}
@@ -552,11 +553,11 @@ void mTimer (int count)
 {
    int i = 0;
 
-   TCCR1B |= _BV (CS10); //Sets prescalar to DIV 1
+   TCCR1B |= _BV (CS10);  //Sets prescalar to DIV 1
    TCCR1B |= _BV(WGM12); //Set the Waveform gen. mode bit description to clear on compare mode only
    
-   OCR1A = 0x03E8; 	// Set output compare register for 1000 cycles, 1ms
-   TCNT1 = 0x0000; 	//Initialize Timer 1 to zero
+   OCR1A = 0x03E8; // Set output compare register for 1000 cycles, 1ms
+   TCNT1 = 0x0000; //Initialize Timer 1 to zero
    TIFR1 |= _BV(OCF1A); //Clear the timer interrupt flag and begin timing
    
    //Poll the timer to determine when the timer has reached 1ms
